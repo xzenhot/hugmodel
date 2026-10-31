@@ -1,0 +1,47 @@
+{
+  "name": "kamolika-mcp-client",
+  "version": "1.0.0",
+  "type": "tool",
+  "description": "Python MCP client for Book.Backend",
+  "author": "Sonnet Lab",
+  "license": "MIT",
+  "config": {
+    "base_url": "https://localhost:6469",
+    "verify_tls": false,
+    "timeout": 30
+  },
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/mcp/initialize",
+      "description": "Send the MCP handshake and return server info payload"
+    },
+    {
+      "method": "GET",
+      "path": "/mcp/tools",
+      "description": "Return list of available tool descriptors"
+    },
+    {
+      "method": "POST",
+      "path": "/mcp/call/{toolName}",
+      "description": "Invoke a named tool with optional arguments dict"
+    }
+  ],
+  "dependencies": [
+    "requests"
+  ],
+  "usage_examples": [
+    "python kamolika.py init",
+    "python kamolika.py tools",
+    "python kamolika.py call write_book \"{\"bookName\":\"MyBook\"}\"",
+    "python kamolika.py call get_dashboard {}",
+    "python kamolika.py call expand_idea \"{\"seed\":\"A story about time travel\"}\""
+  ],
+  "available_commands": {
+    "init": "MCP handshake initialization",
+    "tools": "List available tools",
+    "call": "Invoke a tool with arguments",
+    "help": "Show help text",
+    "quit": "Exit REPL mode"
+  }
+}
